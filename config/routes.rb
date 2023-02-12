@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get "sign_in", to: "sessions#new"
   post"sign_in", to: "sessions#create"
-  get 'auth/:provider/callback', to: 'sessions#create'
+  # get 'auth/:provider/callback', to: 'sessions#create'
 
   get "password", to: "passwords#edit", as: :edit_password
   patch "password", to: "passwords#update" 
@@ -21,4 +21,7 @@ Rails.application.routes.draw do
   delete"logout", to: "sessions#destroy"
 
   get "/auth/twitter/callback", to:"omniauth_callbacks#twitter"
+
+  resources :twitter_accounts
+
 end
